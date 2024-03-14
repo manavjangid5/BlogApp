@@ -8,7 +8,7 @@ export class AuthService {
         this.client.setEndpoint(process.env.REACT_APP_APPWRITE_URL) 
                         .setProject(process.env.REACT_APP_APPWRITE_PROJECT_ID);                
 
-        this.account = new Account(client);
+        this.account = new Account(this.client);
     }
 
     async createAccount({email, password, name}){
