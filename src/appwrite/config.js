@@ -1,46 +1,46 @@
-import { Client, ID, Databases, Storage, Query, Permission, Role } from "appwrite";
+import conf from '../conf/conf.js';
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 
 export class Service{
-
     client = new Client();
     databases;
     bucket;
+    
     constructor(){
-        this.client.setEndpoint(process.env.REACT_APP_APPWRITE_URL) 
-            .setProject(process.env.REACT_APP_APPWRITE_PROJECT_ID);   
-            
+        this.client
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
     }
 
     async createPost({title, slug, content, featuredImage, status, userId}){
         try {
-            return await this.databases.createDocument(process.env.REACT_APP_APPWRITE_DATABASE_ID,
-            process.REACT_APP_APPWRITE_COLLECTION_ID,
-            slug,{
-                title, 
-                content,
-                featuredImage,
-                status,
-                userId,
-            },
-            [
-                Permission.read(Role.any()),                  // Anyone can view this document
-                Permission.update(Role.any()),      // Writers can update this document
-                Permission.delete(Role.any())          // Admins can delete this document
-            ])
+            return await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+                    userId,
+                }
+            )
         } catch (error) {
-            console.log(error);
+            console.log("Appwrite serive :: createPost :: error", error);
         }
     }
 
     async updatePost(slug, {title, content, featuredImage, status}){
         try {
             return await this.databases.updateDocument(
-                process.env.REACT_APP_APPWRITE_DATABASE_ID,
-                process.env.REACT_APP_APPWRITE_COLLECTION_ID,
-                slug,{
-                    title, 
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    title,
                     content,
                     featuredImage,
                     status,
@@ -48,83 +48,87 @@ export class Service{
                 }
             )
         } catch (error) {
-            console.log(error);
+            console.log("Appwrite serive :: updatePost :: error", error);
         }
     }
 
     async deletePost(slug){
         try {
             await this.databases.deleteDocument(
-                process.env.REACT_APP_APPWRITE_DATABASE_ID,
-                process.env.REACT_APP_APPWRITE_COLLECTION_ID,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 slug
+            
             )
-            return true;
+            return true
         } catch (error) {
-            console.log(error);
-            return false;
+            console.log("Appwrite serive :: deletePost :: error", error);
+            return false
         }
     }
 
     async getPost(slug){
         try {
             return await this.databases.getDocument(
-                process.env.REACT_APP_APPWRITE_DATABASE_ID,
-                process.env.REACT_APP_APPWRITE_COLLECTION_ID,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 slug
             )
         } catch (error) {
-            console.log(error);
-            return null;
+            console.log("Appwrite serive :: getPost :: error", error);
+            return false
         }
     }
 
-    async getPosts(queries = [Query.equal("status","active")]){
+    async getPosts(queries = []){
         try {
             return await this.databases.listDocuments(
-                process.env.REACT_APP_APPWRITE_DATABASE_ID,
-                process.env.REACT_APP_APPWRITE_COLLECTION_ID,
-                queries
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries,
             )
         } catch (error) {
-            console.log(error);
-            return null;
+            console.log("Appwrite service :: getPosts :: error", error);
+            return false
         }
     }
+
+    // file upload service
 
     async uploadFile(file){
         try {
             return await this.bucket.createFile(
-                process.env.REACT_APP_APPWRITE_BUCKET_ID,
+                conf.appwriteBucketId,
                 ID.unique(),
                 file
             )
         } catch (error) {
-            console.log(error);
-            return false;
+            console.log("Appwrite serive :: uploadFile :: error", error);
+            return false
         }
     }
-    
+
     async deleteFile(fileId){
         try {
-            return await this.bucket.deleteFile(
-                process.env.REACT_APP_APPWRITE_BUCKET_ID,
+            await this.bucket.deleteFile(
+                conf.appwriteBucketId,
                 fileId
             )
-            return true;
+            return true
         } catch (error) {
-            console.log(error);
-            return false;
+            console.log("Appwrite serive :: deleteFile :: error", error);
+            return false
         }
     }
 
     getFilePreview(fileId){
         return this.bucket.getFilePreview(
-            process.env.REACT_APP_APPWRITE_BUCKET_ID,
+            conf.appwriteBucketId,
             fileId
         )
     }
 }
 
-const service = new Service();
-export default service;
+
+const service = new Service()
+export default service

@@ -38,7 +38,7 @@ function Header() {
 
 
   return (
-    <header className="py-3 shadow" style={{backgroundColor: "#59D5E0", backgroundImage: "linear-gradient(to right, lightblue, lightgreen)"}}>
+    <header className="py-3 shadow" style={{backgroundColor: "#59D5E0", backgroundImage: "linear-gradient(to right, pink, orange)"}}>
       <Container>
         <nav className='flex'>
           <div className='mr-4'>
@@ -60,7 +60,7 @@ function Header() {
                   borderRadius: "10px",
                   width: "150px",
                   height: "50px",
-                  fontSize: "16px",
+                  fontSize: "20px",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
