@@ -11,6 +11,15 @@ function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
+  let bgColor = "bg-green-100";
+  const currTime = new Date();
+  const targetTime = new Date();
+  targetTime.setHours(17, 0, 0, 0); 
+
+  if (currTime.getTime() >= targetTime.getTime()) {
+    bgColor="#333333";
+  }
+  
   useEffect(() => {
     authService.getCurrentUser()
       .then((userData) => {
@@ -24,7 +33,7 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className='min-h-screen flex flex-wrap content-between bg-green-100'>
+    <div className='min-h-screen flex flex-wrap content-between' style={{backgroundColor: `${bgColor}`}}>
       <div className='w-full block'>
         <Header />
         <main>
