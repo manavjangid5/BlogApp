@@ -34,7 +34,8 @@ export class AuthService {
 
   async login({ email, password }) {
     try {
-      const resp = await this.account.createEmailPasswordSession(email, password);
+      //check this create function according to the Version of appwrite.
+      const resp = await this.account.createEmailSession(email, password);
       debugger;
       return resp;
     } catch (error) {

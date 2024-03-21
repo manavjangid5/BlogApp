@@ -29,7 +29,7 @@ function Login() {
 
     return (
         <div
-            className='flex items-center justify-center w-full p-20'
+            className='flex items-center justify-center w-full p-20' style={{ marginTop: '100px' }}
         >
             <div className={`mx-auto w-full max-w-lg bg-gray-200 rounded-xl p-10 border border-black/90`}>
                 <div className="mb-2 flex justify-center ">

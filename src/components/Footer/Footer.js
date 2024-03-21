@@ -4,7 +4,8 @@ import Logo from '../Logo'
 
 function Footer() {
     return (
-        <section className="relative overflow-hidden py-10 border border-t-2 border-t-black" style={{backgroundColor: "#59D5E0", backgroundImage: "linear-gradient(to right, pink, orange)"}}>
+        <footer className="fixed bottom-0 w-full">
+        <section className="relative overflow-hidden py-2 border border-t-2 border-t-black" style={{backgroundColor: "#59D5E0", backgroundImage: "linear-gradient(to left bottom, #6228d7, #ee2a7b, #f9ce34)" }}>
             <div className="relative z-10 mx-auto max-w-7xl px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">
@@ -21,7 +22,7 @@ function Footer() {
                     </div>
                     <div className="w-full p-6 md:w-1/2 lg:w-2/12">
                         <div className="h-full">
-                            <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
+                            <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-black">
                                 Company
                             </h3>
                             <ul>
@@ -41,28 +42,13 @@ function Footer() {
                                         Pricing
                                     </Link>
                                 </li>
-                                <li className="mb-4">
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Affiliate Program
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Press Kit
-                                    </Link>
-                                </li>
+                                
                             </ul>
                         </div>
                     </div>
                     <div className="w-full p-6 md:w-1/2 lg:w-2/12">
                         <div className="h-full">
-                            <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
+                            <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-black">
                                 Support
                             </h3>
                             <ul>
@@ -82,28 +68,12 @@ function Footer() {
                                         Help
                                     </Link>
                                 </li>
-                                <li className="mb-4">
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Contact Us
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Customer Support
-                                    </Link>
-                                </li>
                             </ul>
                         </div>
                     </div>
                     <div className="w-full p-6 md:w-1/2 lg:w-3/12">
                         <div className="h-full">
-                            <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-gray-500">
+                            <h3 className="tracking-px mb-9  text-xs font-semibold uppercase text-black">
                                 Legals
                             </h3>
                             <ul>
@@ -123,20 +93,13 @@ function Footer() {
                                         Privacy Policy
                                     </Link>
                                 </li>
-                                <li>
-                                    <Link
-                                        className=" text-base font-medium text-gray-900 hover:text-gray-700"
-                                        to="/"
-                                    >
-                                        Licensing
-                                    </Link>
-                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        </footer>
     )
 }
 
