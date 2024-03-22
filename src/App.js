@@ -11,7 +11,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  let bgColor = "bg-green-100";
+  let bgColor = "#C6F6D5";
   const currTime = new Date();
   const targetTime = new Date();
   targetTime.setHours(17, 0, 0, 0); 
@@ -42,7 +42,7 @@ function App() {
         <Footer />
       </div>
     </div>
-  ) : null;
+  ) : <div>Loading...</div>;
 }
 
 export default App;

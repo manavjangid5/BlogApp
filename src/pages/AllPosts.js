@@ -17,7 +17,7 @@ function AllPosts() {
       <>
         <div className="w-full flex justify-center items-center" style={{ marginTop: '100px' }}>
             <div className="max-w-xl px-2 py-1">
-                <h1 className="text-4xl font-bold text-center">All Posts</h1>
+                <h1 className="text-4xl font-bold text-center">All Posts by Community</h1>
             </div>
         </div>
 
