@@ -19,7 +19,6 @@ function Login() {
             if (session) {
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(authLogin(userData));
-                // debugger
                 navigate("/")
             }
         } catch (error) {
@@ -70,6 +69,15 @@ function Login() {
                                 required: true,
                             })}
                         />
+                        <p className="mt-2 text-center text-base text-black/60">
+                            Forgot your password?&nbsp;
+                            <Link
+                                to="/forgotpassword"
+                                className="font-medium text-primary transition-all duration-200 hover:underline"
+                            >
+                                Click Here.
+                            </Link>
+                        </p>
                         <Button
                             type="submit"
                             className="w-full"

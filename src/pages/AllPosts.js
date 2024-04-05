@@ -8,7 +8,6 @@ function AllPosts() {
         appwriteService.getAllPosts([]).then((posts) => {
             if (posts) {
                 setPosts(posts.documents)
-                debugger
             }
         })
     }, [])

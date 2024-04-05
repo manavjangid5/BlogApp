@@ -82,7 +82,6 @@ export class Service{
     async getPostsById(id){
         try {
             console.log(id);
-            debugger;
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
@@ -90,14 +89,11 @@ export class Service{
             )
         } catch (error) {
             console.log("Appwrite serive :: getPostsById :: error", error);
-            debugger;
             return false
         }
     }
     async getAllPosts(queries = [Query.equal("status", ["active"])]){
         try {
-            // console.log(queries);
-            // debugger
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,

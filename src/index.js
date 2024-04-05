@@ -12,7 +12,8 @@ import { AuthLayout, Login } from './components/index.js'
 import AddPost from "./pages/AddPost";
 import Signup from './pages/Signup'
 import EditPost from "./pages/EditPost";
-
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword.js'
 import Post from "./pages/Post";
 
 import AllPosts from "./pages/AllPosts";
@@ -39,6 +40,22 @@ const router = createBrowserRouter([
         element: (
           <AuthLayout authentication={false}>
             <Signup />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/forgotpassword",
+        element: (
+          <AuthLayout authentication={false}>
+            <ForgotPassword />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/resetpassword",
+        element: (
+          <AuthLayout authentication={false}>
+            <ResetPassword />
           </AuthLayout>
         ),
       },

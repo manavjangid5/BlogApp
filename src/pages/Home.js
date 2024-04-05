@@ -12,19 +12,16 @@ function Home() {
         const fetchData = async () => {
             try {
                 const currUser = await authService.getCurrentUser();
-                debugger;
                 if (currUser) {
                     setUserActive(true);
                     const posts = await appwriteService.getPostsById(currUser.$id);
                     if (posts) {
                         setPosts(posts.documents);
                     }
-                    debugger
                 }
             } catch (error) {
                 // Handle errors
                 console.error("Error fetching data:", error);
-                debugger
             }
         };
     

@@ -36,10 +36,8 @@ export class AuthService {
     try {
       //check this create function according to the Version of appwrite.
       const resp = await this.account.createEmailSession(email, password);
-      debugger;
       return resp;
     } catch (error) {
-      debugger;
       console.error(error);
       throw error;
     }
@@ -55,6 +53,36 @@ export class AuthService {
     return null;
   }
 
+  async passwordRecovery({email}) {
+    try {
+      const promise = this.account.createRecovery(email, "http://localhost:3000/resetpassword");
+
+      promise.then(function (response) {
+        return response; // Success
+      }).catch(function (error) {
+        console.log(error); // Failure
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async resetPassword({userid, secret, newPass, repeatedPass}){
+    try {
+      debugger
+      const promise = this.account.updateRecovery(userid, secret, newPass, repeatedPass);
+      
+      promise.then(function (response) {
+        debugger
+        return response; // Success
+      }).catch(function (error) {
+        console.log(error); // Failure
+        debugger
+      });
+    } catch (error) {
+      console.log(error);
+      debugger
+    }
+  }
   async logout() {
     try {
       await this.account.deleteSessions();
