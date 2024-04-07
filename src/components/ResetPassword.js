@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button, Input, Logo } from "./index"
 import authService from "../appwrite/auth"
 import { useForm } from "react-hook-form"
@@ -9,15 +9,15 @@ function ResetPassword() {
     const navigate = useNavigate()
     // const dispatch = useDispatch()
     const {register, handleSubmit } = useForm()
-    const {userid, secret} = useParams();
+    const urlParams = new URLSearchParams(window.location.search);
+    const userid = urlParams.get('userId');
+    const secret = urlParams.get('secret');
     
     const resetPassword = async (data) =>{
         try{
 
             console.log(userid, secret); 
-            debugger
             await authService.resetPassword(userid, secret, data.password, data.password);
-            debugger;
             navigate("/login");
             
         }catch(err){

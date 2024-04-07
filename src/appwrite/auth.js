@@ -61,26 +61,26 @@ export class AuthService {
         return response; // Success
       }).catch(function (error) {
         console.log(error); // Failure
+        return false;
       });
     } catch (error) {
       console.log(error);
+      return false;
     }
   }
-  async resetPassword({userid, secret, newPass, repeatedPass}){
+  async resetPassword(userid, secret, newPass, repeatedPass){
     try {
-      debugger
       const promise = this.account.updateRecovery(userid, secret, newPass, repeatedPass);
       
       promise.then(function (response) {
-        debugger
         return response; // Success
       }).catch(function (error) {
         console.log(error); // Failure
-        debugger
+        return false;
       });
     } catch (error) {
       console.log(error);
-      debugger
+      return false;
     }
   }
   async logout() {
