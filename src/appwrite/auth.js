@@ -56,7 +56,6 @@ export class AuthService {
   async passwordRecovery({email}) {
     try {
       let resetUrl;
-      console.log(process.env);
       if (process.env.NODE_ENV === 'production') {
         resetUrl = "https://blog-app-henna-eight.vercel.app/resetpassword";
       } else {
