@@ -55,8 +55,13 @@ export class AuthService {
 
   async passwordRecovery({email}) {
     try {
-      const promise = this.account.createRecovery(email, "http://localhost:3000/resetpassword");
-
+      let resetUrl;
+      if (process.env.NODE_ENV === 'production') {
+        resetUrl = "https://blog-app-henna-eight.vercel.app/resetpassword";
+      } else {
+        resetUrl = "http://localhost:3000/resetpassword";
+      }
+      const promise = this.account.createRecovery(email, resetUrl);
       promise.then(function (response) {
         return response; // Success
       }).catch(function (error) {
